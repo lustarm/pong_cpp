@@ -4,32 +4,29 @@
 
 #include "math.h"
 
-const int OBJECT_COUNT = 3;
-
-Object* object_array[OBJECT_COUNT];
-
-int object_index = 0;
-
 struct Object {
 	Vector pos;
-
 	Object();
-
-	void draw();
+	virtual void draw() const = 0;
 };
 
-/* == Square == */
-struct Square : Object {
+extern const int OBJECT_COUNT;
+extern Object* object_array[];
+extern int object_index;
+
+/* == Rectangle == */
+struct Rect : Object {
 	Vector top_left;
 	Vector top_right;
 
 	Vector bottom_left;
 	Vector bottom_right;
 
-	Square(Vector pos);
-	Square(float perimeter, Vector pos);
+	Rect(Vector rect, Vector pos);
+
+	void draw() const;
 };
-/* == End Square == */
+/* == End Rectangle == */
 
 /* == Circle == */
 struct Circle : Object {
@@ -37,5 +34,7 @@ struct Circle : Object {
 
 	Circle(Vector pos);
 	Circle(float radius, Vector pos);
+
+	void draw() const;
 };
 /* == End Circle */

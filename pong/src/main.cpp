@@ -39,13 +39,22 @@ int main(void)
 
 	glfwMakeContextCurrent(window);
 
-	Square square(4, { 0, 0 });
+	Rect bar_left({.050f, .40f}, {-.95f, 0.f});
+	Rect bar_right({ .050f, .40f }, { .95f, 0.f });
+	Circle ball(.05f, { 0.f, 0.f });
 
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		square.draw();
+		for (int i = 0; i < object_index; ++i) {
+			if (!object_array[i])
+			{
+				cout << "INVALID OBJECT DETECTED" << endl;
+				return 1;
+			}
+			object_array[i]->draw();
+		}
 
 		// rendering draws on back buffer
 		// so when we call swap buffers we take
