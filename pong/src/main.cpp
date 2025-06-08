@@ -45,7 +45,7 @@ int main(void)
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		square.Draw();
+		square.draw();
 
 		// rendering draws on back buffer
 		// so when we call swap buffers we take

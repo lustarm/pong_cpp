@@ -1,9 +1,21 @@
 #pragma once
+
+#include <vector>
+
 #include "math.h"
 
+const int OBJECT_COUNT = 3;
+
+Object* object_array[OBJECT_COUNT];
+
+int object_index = 0;
+
 struct Object {
+	Vector pos;
+
 	Object();
-	void Draw();
+
+	void draw();
 };
 
 /* == Square == */
@@ -14,8 +26,16 @@ struct Square : Object {
 	Vector bottom_left;
 	Vector bottom_right;
 
-	Square();
+	Square(Vector pos);
 	Square(float perimeter, Vector pos);
 };
 /* == End Square == */
 
+/* == Circle == */
+struct Circle : Object {
+	float radius;
+
+	Circle(Vector pos);
+	Circle(float radius, Vector pos);
+};
+/* == End Circle */
